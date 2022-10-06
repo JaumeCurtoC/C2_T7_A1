@@ -9,16 +9,19 @@ import javax.swing.JOptionPane;
 public class AppMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// Declaración de Variables
 		Hashtable<String, ArrayList<Double>> inventarioSuper = new Hashtable<String, ArrayList<Double>>();
-		
+
 		llenarInventario(inventarioSuper);
+
 		mostrarInventario(inventarioSuper);
 		guardarComanda(inventarioSuper);
-		
-	
+
 	}
 
+	// Este método llena el Hashtable con 4 productos, cada uno de ellos, con
+	// nombre, que funciona como key, precio, IVA asociado al producto y cantidad
+	// comprada.
 	public static void llenarInventario(Hashtable<String, ArrayList<Double>> inventarioSuper) {
 		// Precio bruto, IVA, cantidad
 		ArrayList<Double> producto1 = new ArrayList<>();
@@ -51,6 +54,7 @@ public class AppMain {
 
 	}
 
+	// Este método muestra todo el contenido del Hashtable usando Enumeration
 	public static void mostrarInventario(Hashtable<String, ArrayList<Double>> inventarioSuper) {
 		Enumeration<String> keys = inventarioSuper.keys();
 		Enumeration<ArrayList<Double>> enumeration = inventarioSuper.elements();
@@ -66,12 +70,14 @@ public class AppMain {
 
 	}
 
+	// Este método pregunta al usuario que productos quiere comprar y los va
+	// guardando
 	public static void guardarComanda(Hashtable<String, ArrayList<Double>> inventarioSuper) {
 		String nom = "a";
 		double sumaPrecio = 0;
 		double sumaPrecioIVA = 0.0;
 		int cantidadTotal = 0;
-		
+
 		do {
 			nom = JOptionPane.showInputDialog(
 					"Indique el nombre del producto que quiera añadir: (escriba 'final' para terminar su comanda)");
@@ -81,9 +87,9 @@ public class AppMain {
 				ArrayList<Double> a1 = inventarioSuper.get(nom);
 
 				a1.set(2, a1.get(2) + 1);
-				
+
 				sumaPrecio = sumaPrecio + a1.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a1.get(0)+(a1.get(0)*(a1.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a1.get(0) + (a1.get(0) * (a1.get(1) / 100)));
 				cantidadTotal++;
 
 				System.out.println("Producto añadido");
@@ -93,11 +99,11 @@ public class AppMain {
 				ArrayList<Double> a2 = inventarioSuper.get(nom);
 
 				a2.set(2, a2.get(2) + 1);
-				
+
 				sumaPrecio = sumaPrecio + a2.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a2.get(0)+(a2.get(0)*(a2.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a2.get(0) + (a2.get(0) * (a2.get(1) / 100)));
 				cantidadTotal++;
-				
+
 				System.out.println("Producto añadido");
 
 				break;
@@ -105,11 +111,11 @@ public class AppMain {
 				ArrayList<Double> a3 = inventarioSuper.get(nom);
 
 				a3.set(2, a3.get(2) + 1);
-				
+
 				sumaPrecio = sumaPrecio + a3.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a3.get(0)+(a3.get(0)*(a3.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a3.get(0) + (a3.get(0) * (a3.get(1) / 100)));
 				cantidadTotal++;
-				
+
 				System.out.println("Producto añadido");
 
 				break;
@@ -117,11 +123,11 @@ public class AppMain {
 				ArrayList<Double> a4 = inventarioSuper.get(nom);
 
 				a4.set(2, a4.get(2) + 1);
-				
+
 				sumaPrecio = sumaPrecio + a4.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a4.get(0)+(a4.get(0)*(a4.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a4.get(0) + (a4.get(0) * (a4.get(1) / 100)));
 				cantidadTotal++;
-				
+
 				System.out.println("Producto añadido");
 
 				break;
@@ -135,36 +141,39 @@ public class AppMain {
 			}
 
 		} while (nom.contains("final") != true);
-		
+
 		mostrarComanda(inventarioSuper, sumaPrecio, sumaPrecioIVA, cantidadTotal);
 
 	}
 
-	public static void mostrarComanda(Hashtable<String, ArrayList<Double>> inventarioSuper, double sumaPrecio, double sumaPrecioIVA, int cantidadTotal) {
-	
-		
+	// Este método muestra la comanda total al usuario: todos los productos que ha
+	// comprado, el precio total, con y sin IVA. Además pide el cobro de la comanda
+	// y calcula el dinero a devolver
+	public static void mostrarComanda(Hashtable<String, ArrayList<Double>> inventarioSuper, double sumaPrecio,
+			double sumaPrecioIVA, int cantidadTotal) {
+
 		System.out.println("Comanda:");
-		
-		inventarioSuper.forEach((k, v) ->{
-					
-			if (v.get(2)>0.0) {
+
+		inventarioSuper.forEach((k, v) -> {
+
+			if (v.get(2) > 0.0) {
 				System.out.println("Nombre del producto: " + k);
 				System.out.println(" IVA:" + v.get(1));
 				System.out.println(" Precio Bruto: " + v.get(0));
-				System.out.println(" Precio + IVA: " + (v.get(0)+(v.get(0)*(v.get(1)/100))) );
-				System.out.println(" Cantidad: "+ v.get(2));	
+				System.out.println(" Precio + IVA: " + (v.get(0) + (v.get(0) * (v.get(1) / 100))));
+				System.out.println(" Cantidad: " + v.get(2));
 			}
 		});
-		
+
 		System.out.println("Precio Total Bruto: " + sumaPrecio);
 		System.out.println("Precio Total + IVA: " + sumaPrecioIVA);
 		System.out.println("Articulos totales: " + cantidadTotal);
-		
+
 		String p = JOptionPane.showInputDialog("Cuanto dinero va a dar?");
-		
+
 		double pago = Double.parseDouble(p);
-		
-		System.out.println("Se le devolveran: "+(pago-sumaPrecioIVA)+" euros.");
-		
+
+		System.out.println("Se le devolveran: " + (pago - sumaPrecioIVA) + " euros.");
+
 	}
 }

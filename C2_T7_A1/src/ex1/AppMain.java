@@ -15,6 +15,7 @@ public class AppMain {
 		mostrarAlumnos(alumnoMedia);
 	}
 	
+	// Este método pide el número de alumnos y guarda en una variable
 	public static void contarAlumnos(Hashtable<String, Integer> alumnoMedia) {
 		String a = JOptionPane.showInputDialog("Cuantos alumnos hay?");
 		
@@ -26,6 +27,7 @@ public class AppMain {
 		}
 	}
 	
+	// Este método nos permite introducir el nombre del alumno, así como generar la nota media de 4 asignaturas
 	public static void introducirAlumnos(Hashtable<String, Integer> alumnoMedia) {
 		String n = JOptionPane.showInputDialog("Nombre del alumno:");
 		int m = 0;
@@ -47,6 +49,7 @@ public class AppMain {
 		
 	}
 	
+	// Este método muestra todo el contenido del Hashtable: el nombre de cada alumno junto a su nota media
 	public static void mostrarAlumnos(Hashtable<String, Integer> alumnoMedia) {
 		//Enumeramos el contenido del Hashtable para acceder de forma individual
 		Enumeration<String> keys = alumnoMedia.keys();

@@ -10,7 +10,7 @@ import ex3.Utilidades;
 public class AppMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// Declaración de Variables
 		Hashtable<String, ArrayList<Double>> inventario = new Hashtable<String, ArrayList<Double>>();
 		int opcion = 0;
 
@@ -58,6 +58,8 @@ public class AppMain {
 
 	}
 
+	// Este método llena el Hashtable con 10 productos, su nombre, que sirve como
+	// key, precio, IVA asociado y unidades actuales.
 	public static void llenarInventario(Hashtable<String, ArrayList<Double>> inventario) {
 		// Precio, IVA, Stock
 		ArrayList<Double> producto1 = new ArrayList<>();
@@ -132,6 +134,8 @@ public class AppMain {
 
 	}
 
+	// Este método permite visualizar todo el Hashtable con todos los datos
+	// asociados a él
 	public static void mostrarInventario(Hashtable<String, ArrayList<Double>> inventario) {
 
 		System.out.println("\nLista de Productos \n");
@@ -146,6 +150,8 @@ public class AppMain {
 
 	}
 
+	// Este método permite añadir un objeto al Hashtable, se pide nombre y precio,
+	// el IVA es 21 y el stock del producto es automáticamente 1
 	public static void añadirArticulo(Hashtable<String, ArrayList<Double>> inventario) {
 
 		System.out.println("Indique el nombre del articulo: ");
@@ -164,6 +170,8 @@ public class AppMain {
 		System.out.println("Articulo añadido.");
 	}
 
+	// Permite mostrar un objeto del Hashtable cuya key coincida con un nombre que
+	// haya introducido el usuario
 	public static void mostrarArticulo(Hashtable<String, ArrayList<Double>> inventario) {
 		System.out.println("Indique el nombre del articulo: ");
 		String nombre = Utilidades.leerCadena();
@@ -176,6 +184,8 @@ public class AppMain {
 		});
 	}
 
+	// Permite cambiar el valor de stock de un objeto cuya key coincida con un
+	// nombre que haya introducido el usuario
 	public static void cambiarStock(Hashtable<String, ArrayList<Double>> inventario) {
 		System.out.println("Indique el nombre del articulo: ");
 		String nombre = Utilidades.leerCadena();
@@ -192,33 +202,35 @@ public class AppMain {
 		});
 	}
 
+	// Este método pregunta al usuario que productos quiere comprar y los va
+	// guardando
 	public static void guardarComanda(Hashtable<String, ArrayList<Double>> inventario) {
 		String nom = "";
 		double sumaPrecio = 0;
 		double sumaPrecioIVA = 0.0;
 		int cantidadTotal = 0;
 		Hashtable<String, ArrayList<Double>> comanda = new Hashtable<String, ArrayList<Double>>();
-		
+
 		do {
-			System.out.println("Indique el nombre del producto que quiera añadir: (escriba 'final' para terminar su comanda)");
+			System.out.println(
+					"Indique el nombre del producto que quiera añadir: (escriba 'final' para terminar su comanda)");
 			nom = Utilidades.leerCadena();
 			switch (nom) {
 			case "Pantalon":
 				ArrayList<Double> a1 = inventario.get(nom);
-				
+
 				ArrayList<Double> producto1 = new ArrayList<>();
 
 				producto1.add(a1.get(0));
 				producto1.add(a1.get(1));
 				producto1.add(1.0);
-				
-				
+
 				comanda.put(nom, producto1);
-				
+
 				sumaPrecio = sumaPrecio + a1.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a1.get(0)+(a1.get(0)*(a1.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a1.get(0) + (a1.get(0) * (a1.get(1) / 100)));
 				cantidadTotal++;
-				
+
 				System.out.println("Producto añadido");
 
 				break;
@@ -230,11 +242,11 @@ public class AppMain {
 				producto2.add(a2.get(0));
 				producto2.add(a2.get(1));
 				producto2.add(1.0);
-				
+
 				comanda.put(nom, producto2);
-				
+
 				sumaPrecio = sumaPrecio + a2.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a2.get(0)+(a2.get(0)*(a2.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a2.get(0) + (a2.get(0) * (a2.get(1) / 100)));
 				cantidadTotal++;
 
 				System.out.println("Producto añadido");
@@ -248,11 +260,11 @@ public class AppMain {
 				producto3.add(a3.get(0));
 				producto3.add(a3.get(1));
 				producto3.add(1.0);
-				
+
 				comanda.put(nom, producto3);
-				
+
 				sumaPrecio = sumaPrecio + a3.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a3.get(0)+(a3.get(0)*(a3.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a3.get(0) + (a3.get(0) * (a3.get(1) / 100)));
 				cantidadTotal++;
 
 				System.out.println("Producto añadido");
@@ -266,12 +278,11 @@ public class AppMain {
 				producto4.add(a4.get(0));
 				producto4.add(a4.get(1));
 				producto4.add(1.0);
-				
-				
+
 				comanda.put(nom, producto4);
-				
+
 				sumaPrecio = sumaPrecio + a4.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a4.get(0)+(a4.get(0)*(a4.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a4.get(0) + (a4.get(0) * (a4.get(1) / 100)));
 				cantidadTotal++;
 
 				System.out.println("Producto añadido");
@@ -286,11 +297,11 @@ public class AppMain {
 				producto5.add(a5.get(0));
 				producto5.add(a5.get(1));
 				producto5.add(1.0);
-				
+
 				comanda.put(nom, producto5);
-				
+
 				sumaPrecio = sumaPrecio + a5.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a5.get(0)+(a5.get(0)*(a5.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a5.get(0) + (a5.get(0) * (a5.get(1) / 100)));
 				cantidadTotal++;
 
 				System.out.println("Producto añadido");
@@ -304,11 +315,11 @@ public class AppMain {
 				producto6.add(a6.get(0));
 				producto6.add(a6.get(1));
 				producto6.add(1.0);
-				
+
 				comanda.put(nom, producto6);
-				
+
 				sumaPrecio = sumaPrecio + a6.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a6.get(0)+(a6.get(0)*(a6.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a6.get(0) + (a6.get(0) * (a6.get(1) / 100)));
 				cantidadTotal++;
 
 				System.out.println("Producto añadido");
@@ -322,11 +333,11 @@ public class AppMain {
 				producto7.add(a7.get(0));
 				producto7.add(a7.get(1));
 				producto7.add(1.0);
-				
+
 				comanda.put(nom, producto7);
-				
+
 				sumaPrecio = sumaPrecio + a7.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a7.get(0)+(a7.get(0)*(a7.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a7.get(0) + (a7.get(0) * (a7.get(1) / 100)));
 				cantidadTotal++;
 
 				System.out.println("Producto añadido");
@@ -340,11 +351,11 @@ public class AppMain {
 				producto8.add(a8.get(0));
 				producto8.add(a8.get(1));
 				producto8.add(1.0);
-				
+
 				comanda.put(nom, producto8);
-				
+
 				sumaPrecio = sumaPrecio + a8.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a8.get(0)+(a8.get(0)*(a8.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a8.get(0) + (a8.get(0) * (a8.get(1) / 100)));
 				cantidadTotal++;
 
 				System.out.println("Producto añadido");
@@ -359,11 +370,11 @@ public class AppMain {
 				producto9.add(a9.get(0));
 				producto9.add(a9.get(1));
 				producto9.add(1.0);
-				
+
 				comanda.put(nom, producto9);
-				
+
 				sumaPrecio = sumaPrecio + a9.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a9.get(0)+(a9.get(0)*(a9.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a9.get(0) + (a9.get(0) * (a9.get(1) / 100)));
 				cantidadTotal++;
 
 				System.out.println("Producto añadido");
@@ -377,13 +388,13 @@ public class AppMain {
 				producto10.add(a10.get(0));
 				producto10.add(a10.get(1));
 				producto10.add(1.0);
-				
+
 				comanda.put(nom, producto10);
 
 				sumaPrecio = sumaPrecio + a10.get(0);
-				sumaPrecioIVA = sumaPrecioIVA + (a10.get(0)+(a10.get(0)*(a10.get(1)/100)));
+				sumaPrecioIVA = sumaPrecioIVA + (a10.get(0) + (a10.get(0) * (a10.get(1) / 100)));
 				cantidadTotal++;
-				
+
 				System.out.println("Producto añadido");
 
 				break;
@@ -403,7 +414,11 @@ public class AppMain {
 		mostrarComanda(comanda, sumaPrecio, sumaPrecioIVA, cantidadTotal);
 	}
 
-	public static void mostrarComanda(Hashtable<String, ArrayList<Double>> comanda, double sumaPrecio, double sumaPrecioIVA, int cantidadTotal) {
+	// Este método muestra la comanda total al usuario: todos los productos que ha
+	// comprado, el precio total, con y sin IVA. Además pide el cobro de la comanda
+	// y calcula el dinero a devolver
+	public static void mostrarComanda(Hashtable<String, ArrayList<Double>> comanda, double sumaPrecio,
+			double sumaPrecioIVA, int cantidadTotal) {
 		System.out.println("Comanda:");
 
 		comanda.forEach((k, v) -> {
@@ -414,7 +429,7 @@ public class AppMain {
 				System.out.println(" Precio Bruto: " + v.get(0));
 				System.out.println(" Precio + IVA: " + (v.get(0) + (v.get(0) * (v.get(1) / 100))));
 				System.out.println(" Cantidad: " + v.get(2));
-				
+
 			}
 		});
 

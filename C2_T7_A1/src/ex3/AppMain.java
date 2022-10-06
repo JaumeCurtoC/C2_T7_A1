@@ -50,8 +50,10 @@ public class AppMain {
 
 	}
 
+	// Este método llena el Hashtable con 10 productos, su nombre, que sirve como
+	// key, precio y unidades actuales.
 	public static void llenarInventario(Hashtable<String, ArrayList<Double>> inventario) {
-		//Precio, Stock
+		// Precio, Stock
 		ArrayList<Double> producto1 = new ArrayList<>();
 		producto1.add(20.0);
 		producto1.add(1.0);
@@ -114,19 +116,23 @@ public class AppMain {
 
 	}
 
+	// Este método permite visualizar todo el Hashtable con todos los datos
+	// asociados a él
 	public static void mostrarInventario(Hashtable<String, ArrayList<Double>> inventario) {
 
 		System.out.println("\nLista de Productos \n");
 
-		inventario.forEach((k, v)->{
+		inventario.forEach((k, v) -> {
 			System.out.println("Producto: " + k);
 			System.out.println(" Precio: " + v.get(0));
 			System.out.println(" Stock: " + v.get(1));
-			
+
 		});
 
 	}
 
+	// Este método permite añadir un objeto al Hashtable, se pide nombre y precio,
+	// el stock del producto es automáticamente 1
 	public static void añadirArticulo(Hashtable<String, ArrayList<Double>> inventario) {
 
 		System.out.println("Indique el nombre del articulo: ");
@@ -134,7 +140,7 @@ public class AppMain {
 
 		System.out.println("Indique el precio del articulo: ");
 		double precio = Utilidades.leerDouble();
-		
+
 		ArrayList<Double> producto = new ArrayList<>();
 		producto.add(precio);
 		producto.add(1.0);
@@ -144,6 +150,8 @@ public class AppMain {
 		System.out.println("Articulo añadido.");
 	}
 
+	// Permite mostrar un objeto del Hashtable cuya key coincida con un nombre que
+	// haya introducido el usuario
 	public static void mostrarArticulo(Hashtable<String, ArrayList<Double>> inventario) {
 		System.out.println("Indique el nombre del articulo: ");
 		String nombre = Utilidades.leerCadena();
@@ -155,6 +163,8 @@ public class AppMain {
 		});
 	}
 
+	// Permite cambiar el valor de stock de un objeto cuya key coincida con un
+	// nombre que haya introducido el usuario
 	public static void cambiarStock(Hashtable<String, ArrayList<Double>> inventario) {
 		System.out.println("Indique el nombre del articulo: ");
 		String nombre = Utilidades.leerCadena();
@@ -163,9 +173,9 @@ public class AppMain {
 			if (k.equals(nombre)) {
 				System.out.println("Indique el stock actual: ");
 				double stock = Utilidades.leerDouble();
-				
+
 				v.set(1, stock);
-				
+
 				System.out.println("Stock modificado");
 			}
 		});
